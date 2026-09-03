@@ -125,6 +125,12 @@ h1,h2,h3,p,a,span,label{overflow-wrap:anywhere}
 @media(max-width:620px){.audience-section>.container{width:calc(100% - 20px);padding:62px 28px}.audience-section .info-card{min-height:0;padding:26px 22px}}
 @media(max-width:360px){.audience-section>.container{padding:54px 20px}.audience-section .info-card{padding:24px 18px}}
 
+/* Supplied service photography keeps posters readable and workshop images contained. */
+.service-image{display:block;width:100%;height:220px;margin:1rem 0;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
+.service-poster{height:360px;object-fit:contain;background:#211f1a}
+.service-feature-image{display:block;width:100%;height:100%;min-height:620px;object-fit:cover}
+@media(max-width:620px){.service-poster{height:440px}.service-feature-image{min-height:350px}}
+
 /* Colour-matched customer frame: blend the supplied white artwork into warm ivory. */
 .audience-section>.container{position:relative;isolation:isolate;background:var(--paper);background-image:none;box-shadow:none}
 .audience-section>.container::before,.audience-section>.container::after{content:"";position:absolute;z-index:-1;pointer-events:none;width:min(48%,620px);height:min(32%,340px);background-image:url('../images/border/our_customer_border.jpg');background-repeat:no-repeat;background-size:210% auto;mix-blend-mode:multiply;opacity:.52}
