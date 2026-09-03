@@ -1,0 +1,3 @@
+# macOS Finder metadata is local-only and should not be published.
+.DS_Store
+**/.DS_Store
