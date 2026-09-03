@@ -169,3 +169,5 @@ h1,h2,h3,p,a,span,label{overflow-wrap:anywhere}
 
 /* Desktop-only alignment: nudge the burger slightly left of the content line. */
 @media(min-width:1181px){.menu-toggle{position:absolute;top:19px;left:18px;transform:none}.nav .brand{margin-left:62px}}
+
+.service-description{color:#b9b3a8;font-size:.86rem;line-height:1.55;margin:18px 0 8px}
