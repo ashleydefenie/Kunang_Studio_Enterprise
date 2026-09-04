@@ -211,6 +211,46 @@ function setupRevealAnimations() {
   items.forEach(item => observer.observe(item));
 }
 
+// Sends the homepage firefly between soft, unpredictable waypoints.
+function setupHomepageFirefly() {
+  const original = document.querySelector(".home-firefly");
+  if (!original || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const fireflies = [original];
+  for (let index = 1; index < 4; index += 1) {
+    const firefly = original.cloneNode(true);
+    firefly.style.setProperty("--firefly-size", `${.58 + Math.random() * .62}`);
+    firefly.style.setProperty("--firefly-delay", `${Math.random() * -8}s`);
+    original.parentElement.append(firefly);
+    fireflies.push(firefly);
+  }
+
+  fireflies.forEach((firefly, index) => {
+    let current = {x: 8 + Math.random() * 84, y: 14 + Math.random() * 70};
+    let target = {x: 8 + Math.random() * 84, y: 14 + Math.random() * 70};
+    let startedAt = performance.now() - Math.random() * 6000;
+    let duration = 5000 + Math.random() * 5000;
+
+    function move(now) {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const eased = progress * progress * (3 - 2 * progress);
+      const sway = Math.sin(progress * Math.PI * 2) * 3;
+      firefly.style.setProperty("--firefly-x", `${current.x + (target.x - current.x) * eased}%`);
+      firefly.style.setProperty("--firefly-y", `${current.y + (target.y - current.y) * eased + sway}%`);
+      firefly.style.setProperty("--firefly-angle", `${Math.atan2(target.y - current.y, target.x - current.x) * 180 / Math.PI + 90}deg`);
+      if (progress === 1) {
+        current = target;
+        target = {x: 8 + Math.random() * 84, y: 14 + Math.random() * 70};
+        startedAt = now;
+        duration = 5000 + Math.random() * 5000;
+      }
+      requestAnimationFrame(move);
+    }
+
+    firefly.style.setProperty("--firefly-index", index);
+    requestAnimationFrame(move);
+  });
+}
+
 // Starts all site features after shared components have been rendered.
 function initializeSite() {
   renderSharedLayout();
@@ -223,6 +263,7 @@ function initializeSite() {
   setupEnquiryForm();
   setupReviewGallery();
   setupRevealAnimations();
+  setupHomepageFirefly();
 }
 
 document.addEventListener("DOMContentLoaded", initializeSite);

@@ -171,3 +171,19 @@ h1,h2,h3,p,a,span,label{overflow-wrap:anywhere}
 @media(min-width:1181px){.menu-toggle{position:absolute;top:19px;left:18px;transform:none}.nav .brand{margin-left:62px}}
 
 .service-description{color:#b9b3a8;font-size:.86rem;line-height:1.55;margin:18px 0 8px}.whatsapp-button{white-space:nowrap}.experience-photo{display:block;width:100%;height:620px;object-fit:contain;background:var(--ink);border:1px solid rgba(197,160,89,.35)}
+
+/* Homepage firefly: a quiet gold point of light over the hero image. */
+.hero-home{isolation:isolate;overflow:hidden}
+.home-firefly{position:absolute;z-index:1;top:var(--firefly-y,28%);left:var(--firefly-x,18%);width:76px;height:112px;pointer-events:none;transform:translate(-50%,-50%) scale(var(--firefly-size,1)) rotate(var(--firefly-angle,0deg));transition:opacity .3s ease}
+.home-firefly::after{content:"";position:absolute;z-index:-1;left:50%;bottom:0;width:35px;height:35px;border-radius:50%;background:rgba(255,194,58,.65);filter:blur(12px);transform:translateX(-50%);animation:firefly-pulse 1.8s ease-in-out infinite}
+.firefly-antenna{position:absolute;top:21px;width:2px;height:31px;background:#dcb66a;transform-origin:bottom;border-radius:2px}
+.firefly-antenna::after{content:"";position:absolute;top:-3px;left:-3px;width:8px;height:8px;border-radius:50%;background:#ffe5a0;box-shadow:0 0 8px 2px #eabe55}
+.firefly-antenna-left{left:31px;transform:rotate(-32deg)}.firefly-antenna-right{right:31px;transform:rotate(32deg)}
+.firefly-wing{position:absolute;top:47px;width:30px;height:57px;border:1px solid #cda653;background:linear-gradient(135deg,rgba(236,195,102,.96),rgba(157,111,30,.82));box-shadow:inset 0 0 8px rgba(255,239,171,.5);border-radius:75% 25% 70% 30%;transform-origin:bottom}
+.firefly-wing-left{left:7px;transform:rotate(37deg)}.firefly-wing-right{right:7px;transform:scaleX(-1) rotate(37deg)}
+.firefly-body{position:absolute;z-index:2;top:38px;left:50%;width:30px;height:30px;border:1px solid #f5d77f;border-radius:50%;background:#d7aa3f;box-shadow:inset 0 0 5px #fff0b0,0 0 8px rgba(249,202,87,.7);transform:translateX(-50%)}
+.firefly-light{position:absolute;z-index:3;left:50%;bottom:-2px;width:31px;height:31px;border-radius:50%;background:#fff4bf;box-shadow:0 0 8px 5px #ffe17a,0 0 25px 12px rgba(255,180,35,.75);transform:translateX(-50%);animation:firefly-pulse 1.8s ease-in-out infinite}
+.hero-home .hero-content,.hero-home .scroll-cue{position:relative;z-index:2}
+@keyframes firefly-pulse{50%{opacity:.35;transform:scale(.7)} }
+@media(max-width:620px){.home-firefly{width:62px;height:92px;transform:translate(-50%,-50%) scale(calc(var(--firefly-size,1) * .82)) rotate(var(--firefly-angle,0deg))}}
+@media(prefers-reduced-motion:reduce){.home-firefly::after,.firefly-light{animation:none}.home-firefly{top:28%;left:18%}}
