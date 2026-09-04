@@ -3,15 +3,14 @@ const WHATSAPP_NUMBER = "60123256276";
 
 // Returns the shared header markup and highlights the current page.
 function createHeader(activePage) {
-  const links = [{id:"home",href:"index.html",label:"Utama / Home"},{id:"about",href:"about.html",label:"Tentang / About"},{id:"crafts",href:"crafts.html",label:"Produk / Products"},{id:"services",href:"services.html",label:"Perkhidmatan / Services"},{id:"reviews",href:"index.html#reviews",label:"Ulasan / Reviews"},{id:"contact",href:"contact.html",label:"Hubungi / Contact"}];
+  const links = [{id:"home",href:"index.html",label:"Utama / Home"},{id:"about",href:"about.html",label:"Tentang / About"},{id:"crafts",href:"crafts.html",label:"Produk / Products"},{id:"services",href:"services.html",label:"Perkhidmatan / Services"},{id:"contact",href:"contact.html",label:"Hubungi / Contact"}];
   const linkMarkup = links.map(link => `<a class="${activePage === link.id ? "active" : ""}" href="${link.href}">${link.label}</a>`).join("");
-  const whatsAppMarkup = `<a class="btn btn-primary whatsapp-button" data-wa="Salam Kunang Studio, saya ingin membuat pertanyaan. / Hello, I would like to make an enquiry." href="#">WhatsApp <span>↗</span></a>`;
-  return `<header class="site-header"><nav class="nav container" aria-label="Navigasi utama / Main navigation"><a class="brand" href="index.html"><img class="brand-logo" src="assets/images/logo/LOGO KUNANG STUDIO ENTERPRISE 2.jpeg" alt="Logo rasmi Kunang Studio / Official Kunang Studio logo"><span class="brand-name">KUNANG STUDIO<small>CRAFTS & BEAUTY</small></span></a><div class="desktop-links" aria-label="Navigasi desktop / Desktop navigation">${linkMarkup}${whatsAppMarkup}</div><div class="nav-links" id="nav-links">${linkMarkup}${whatsAppMarkup}</div><button class="menu-toggle" aria-label="Buka menu / Open menu" aria-controls="nav-links" aria-expanded="false">☰</button></nav></header>`;
+  return `<header class="site-header"><nav class="nav container" aria-label="Navigasi utama / Main navigation"><a class="brand" href="index.html"><img class="brand-logo" src="assets/images/logo/LOGO KUNANG STUDIO ENTERPRISE 2.jpeg" alt="Logo rasmi Kunang Studio / Official Kunang Studio logo"><span class="brand-name">KUNANG STUDIO<small>CRAFTS & BEAUTY</small></span></a><div class="desktop-links" aria-label="Navigasi desktop / Desktop navigation">${linkMarkup}</div><div class="nav-links" id="nav-links">${linkMarkup}</div><button class="menu-toggle" aria-label="Buka menu / Open menu" aria-controls="nav-links" aria-expanded="false">☰</button></nav></header>`;
 }
 
-// Returns the shared footer markup used across all five pages.
+// Returns the shared footer and floating WhatsApp icon used across all pages.
 function createFooter() {
-  return `<footer class="site-footer"><div class="container"><div class="footer-grid"><div><a class="brand footer-brand" href="index.html"><img class="brand-logo" src="assets/images/logo/LOGO KUNANG STUDIO ENTERPRISE 2.jpeg" alt="Logo rasmi Kunang Studio / Official Kunang Studio logo"><span class="brand-name">KUNANG STUDIO<small>CRAFTS & BEAUTY</small></span></a><p>Memelihara seni kraf, busana tradisional dan warisan masyarakat Dayak Sarawak.<span class="en">Preserving the crafts, traditional attire and heritage of Sarawak's Dayak community.</span></p></div><div><h4>NAVIGASI · NAVIGATION</h4><a href="about.html">Tentang / About</a><a href="crafts.html">Produk / Products</a><a href="services.html">Perkhidmatan / Services</a><a href="contact.html">Hubungi / Contact</a></div><div><h4>HUBUNGI · CONTACT</h4><a data-wa="Salam Kunang Studio, saya ingin membuat pertanyaan. / Hello, I would like to make an enquiry." href="#">WhatsApp: +60 12-325 6276</a><p>Sarawak, Malaysia</p><div class="social-list footer-social"><span>Facebook · Kunang Studi Enterprise</span><span>TikTok · corinaaknyamok</span></div></div></div><div class="footer-bottom"><span>© 2026 Kunang Studio Enterprise. Hak cipta terpelihara / All rights reserved.</span><span>Buatan tangan · Berakar warisan / Handmade · Heritage-rooted</span></div></div></footer><a class="floating-wa" data-wa="Salam Kunang Studio, saya ingin membuat pertanyaan. / Hello, I would like to make an enquiry." href="#" aria-label="Hubungi melalui WhatsApp / Contact via WhatsApp">WA</a>`;
+  return `<footer class="site-footer"><div class="container"><div class="footer-grid"><div><a class="brand footer-brand" href="index.html"><img class="brand-logo" src="assets/images/logo/LOGO KUNANG STUDIO ENTERPRISE 2.jpeg" alt="Logo rasmi Kunang Studio / Official Kunang Studio logo"><span class="brand-name">KUNANG STUDIO<small>CRAFTS & BEAUTY</small></span></a><p>Memelihara seni kraf, busana tradisional dan warisan masyarakat Dayak Sarawak.<span class="en">Preserving the crafts, traditional attire and heritage of Sarawak's Dayak community.</span></p></div><div><h4>NAVIGASI · NAVIGATION</h4><a href="about.html">Tentang / About</a><a href="crafts.html">Produk / Products</a><a href="services.html">Perkhidmatan / Services</a><a href="contact.html">Hubungi / Contact</a></div><div><h4>HUBUNGI · CONTACT</h4><a data-wa="Salam Kunang Studio, saya ingin membuat pertanyaan. / Hello, I would like to make an enquiry." href="#">WhatsApp: +60 12-325 6276</a><p>Sarawak, Malaysia</p><div class="social-list footer-social"><span>Facebook · Kunang Studi Enterprise</span><span>TikTok · corinaaknyamok</span></div></div></div><div class="footer-bottom"><span>© 2026 Kunang Studio Enterprise. Hak cipta terpelihara / All rights reserved.</span><span>Buatan tangan · Berakar warisan / Handmade · Heritage-rooted</span></div></div></footer><a class="floating-wa" data-wa="Salam Kunang Studio, saya ingin membuat pertanyaan. / Hello, I would like to make an enquiry." href="#" aria-label="Hubungi melalui WhatsApp / Contact via WhatsApp"><img src="assets/images/logo/whatsapp_iconnn.jpeg" alt="" aria-hidden="true"></a>`;
 }
 
 // Builds a WhatsApp click-to-chat URL with safely encoded text.
@@ -175,7 +174,7 @@ function createReviewCard(review, index) {
   return card;
 }
 
-// Renders review batches and connects category filters and the load-more control.
+// Renders review batches and connects category filters and the View More button.
 function setupReviewGallery() {
   const grid = document.querySelector("#review-grid");
   if (!grid) return;
@@ -189,7 +188,7 @@ function setupReviewGallery() {
   function renderReviews() {
     const selected = activeCategory === "all" ? allReviews : allReviews.filter(review => review.category === activeCategory);
     grid.replaceChildren(...selected.slice(0, visibleCount).map(createReviewCard));
-    moreButton.hidden = visibleCount >= selected.length;
+    if (moreButton) moreButton.hidden = visibleCount >= selected.length;
   }
 
   filters.forEach(button => button.addEventListener("click", () => {
@@ -198,7 +197,7 @@ function setupReviewGallery() {
     filters.forEach(filter => filter.classList.toggle("active", filter === button));
     renderReviews();
   }));
-  moreButton.addEventListener("click", () => { visibleCount += 6; renderReviews(); });
+  if (moreButton) moreButton.addEventListener("click", () => { visibleCount += 6; renderReviews(); });
   renderReviews();
 }
 
@@ -211,8 +210,8 @@ function setupRevealAnimations() {
   items.forEach(item => observer.observe(item));
 }
 
-// Sends the homepage firefly between soft, unpredictable waypoints.
-function setupHomepageFirefly() {
+// Sends the decorative hero lights between soft, unpredictable waypoints on every page.
+function setupHeroLights() {
   const original = document.querySelector(".home-firefly");
   if (!original || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const fireflies = [original];
@@ -263,7 +262,7 @@ function initializeSite() {
   setupEnquiryForm();
   setupReviewGallery();
   setupRevealAnimations();
-  setupHomepageFirefly();
+  setupHeroLights();
 }
 
 document.addEventListener("DOMContentLoaded", initializeSite);
